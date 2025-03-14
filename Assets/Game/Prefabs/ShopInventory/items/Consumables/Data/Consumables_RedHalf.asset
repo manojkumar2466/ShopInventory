@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791c7417f5804294a914a293748fe957, type: 3}
+  m_Name: Consumables_RedHalf
+  m_EditorClassIdentifier: 
+  itemName: RedHalfPotion
+  itemIcon: {fileID: 21300000, guid: 117b17facff65dc42b1b57deb7c21551, type: 3}
+  itemtype: 2
+  sellingPrice: 80
+  buyingPrice: 95
+  weight: 15
+  rarity: 3
+  quantityAvailable: 9
+  description: Red half Potion
