@@ -11,5 +11,5 @@ public class ShopItemTypesSO : ScriptableObject
     public Image displayImage;
     public TextMeshProUGUI description;
     public EShopItemType shopItemType;
-    public List<ShopItemTypes> itemTypeList;
+    public List<ShopItem> itemsList;
 }

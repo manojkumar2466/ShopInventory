@@ -15,4 +15,5 @@ MonoBehaviour:
   displayImage: {fileID: 0}
   description: {fileID: 0}
   shopItemType: 0
-  itemTypeList: []
+  itemsList:
+  - {fileID: 5444841130269617587, guid: 2628fd0b4cab3874f9baa6024e6fe80d, type: 3}

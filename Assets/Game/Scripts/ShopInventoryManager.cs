@@ -11,10 +11,36 @@ public enum EShopItemType
     Treasure
 }
 
+public enum ERarity
+{
+    VeryCommon,
+    Common,
+    Rare,
+    Epic,
+    Legendary
+}
+
 public class ShopInventoryManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> shopItemTypesList;
-    [SerializeField] private GameObject content;
+    [SerializeField] public GameObject itemtypcontent;
+    [SerializeField] public GameObject itemContent;
+
+    public GameObject ShopItemBlueprintObject;
+    private static ShopInventoryManager instance;
+    public static ShopInventoryManager Instance { get { return instance; } }
+
+    private void Awake()
+    {
+        if (!instance)
+        {
+            instance = this;
+        }   
+        else if(instance)
+        {
+            Destroy(gameObject);
+        }
+    }
     void Start()
     {
         if (shopItemTypesList.Count > 0)
@@ -22,7 +48,7 @@ public class ShopInventoryManager : MonoBehaviour
             for(int index=0; index< shopItemTypesList.Count; index++)
             {
                 GameObject shopItemType = Instantiate(shopItemTypesList[index]);
-                shopItemType.transform.SetParent(content.transform);
+                shopItemType.transform.SetParent(itemtypcontent.transform);
             }
         }
     }
