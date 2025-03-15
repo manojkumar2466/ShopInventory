@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 791c7417f5804294a914a293748fe957, type: 3}
   m_Name: Material_Bread
   m_EditorClassIdentifier: 
-  itemName: Candle
-  itemIcon: {fileID: 21300000, guid: 4408269a96438e84796304f4ac0ed623, type: 3}
+  itemName: Bread
+  itemIcon: {fileID: 21300000, guid: 1a58749f555f75e48baa41893215b26e, type: 3}
   itemtype: 0
-  sellingPrice: 22
-  buyingPrice: 30
-  weight: 10
-  rarity: 1
-  quantityAvailable: 10
-  description: Candle
+  sellingPrice: 10
+  buyingPrice: 15
+  weight: 5
+  rarity: 0
+  quantityAvailable: 50
+  description: Bread to eat
