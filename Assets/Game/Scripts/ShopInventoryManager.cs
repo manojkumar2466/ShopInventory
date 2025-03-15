@@ -25,7 +25,8 @@ public class ShopInventoryManager : MonoBehaviour
     [SerializeField] private List<GameObject> shopItemTypesList;
     [SerializeField] public GameObject itemtypcontent;
     [SerializeField] public GameObject itemContent;
-
+    private List<ShopItemType> typeList = new List<ShopItemType>(); 
+    public int currentActiveTab;
     public GameObject ShopItemBlueprintObject;
     private static ShopInventoryManager instance;
     public static ShopInventoryManager Instance { get { return instance; } }
@@ -49,9 +50,38 @@ public class ShopInventoryManager : MonoBehaviour
             {
                 GameObject shopItemType = Instantiate(shopItemTypesList[index]);
                 shopItemType.transform.SetParent(itemtypcontent.transform);
+                ShopItemType itemType = shopItemType.GetComponent<ShopItemType>();
+                if (itemType)
+                {
+                    itemType.myId = index;
+                }
+                typeList.Add(itemType);
+            }
+            currentActiveTab = 0;
+            HandleTabs();
+        }
+        
+    }
+
+    public void HandleTabs()
+    {
+        if (typeList != null && typeList.Count > 0)
+        {
+            for(int index=0; index<typeList.Count; index++)
+            {
+                if (index == currentActiveTab)
+                {
+                    typeList[index].OnSelected();
+                }
+                else
+                {
+                    typeList[index].OnDeselected();
+                }
             }
         }
     }
+
+
 
    
 }

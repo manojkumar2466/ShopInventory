@@ -496,7 +496,7 @@ GameObject:
   - component: {fileID: 257769301}
   - component: {fileID: 257769302}
   m_Layer: 5
-  m_Name: Content
+  m_Name: ItemContent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1717,7 +1717,7 @@ GameObject:
   - component: {fileID: 1409221658}
   - component: {fileID: 1409221657}
   m_Layer: 5
-  m_Name: Content
+  m_Name: TypeContent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2596,4 +2596,6 @@ MonoBehaviour:
   - {fileID: 5952835176459773767, guid: e2c14e8b4a130cf40b2cdc461b80bcaf, type: 3}
   - {fileID: 3520248937881567002, guid: ea993ac5177498b4cb2e010f0e5f9ced, type: 3}
   - {fileID: 3000934244447433964, guid: 1cd0144823f837f4bae4632db6faa768, type: 3}
-  content: {fileID: 1409221655}
+  itemtypcontent: {fileID: 1409221655}
+  itemContent: {fileID: 257769299}
+  ShopItemBlueprintObject: {fileID: 7008569783587701270, guid: ab2741ea3d5fe414ea39bb3d8f82b7e5, type: 3}
