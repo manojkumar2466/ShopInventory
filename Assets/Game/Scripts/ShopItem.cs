@@ -18,6 +18,7 @@ public class ShopItem : MonoBehaviour
     private ERarity rarity;
     private int quantityAvailable;
     private string description;
+    private Button button;
 
     public void Initialize(ShopItemSO data)
     {
@@ -31,6 +32,13 @@ public class ShopItem : MonoBehaviour
         quantityAvailable = data.quantityAvailable;
         description = data.description;
         image.sprite = itemIcon;
+        button = GetComponent<Button>();
+        button.onClick.AddListener(OnButtonClick);
+    }
+
+    void OnButtonClick()
+    {
+        ShopInventoryManager.Instance.UpdateDescription(description);
     }
     
     

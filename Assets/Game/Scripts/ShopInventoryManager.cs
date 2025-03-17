@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 
 public enum EShopItemType
@@ -28,6 +30,10 @@ public class ShopInventoryManager : MonoBehaviour
     private List<ShopItemType> typeList = new List<ShopItemType>(); 
     public int currentActiveTab;
     public GameObject ShopItemBlueprintObject;
+
+   
+    [SerializeField] private TextMeshProUGUI description;
+
     private static ShopInventoryManager instance;
     public static ShopInventoryManager Instance { get { return instance; } }
 
@@ -81,6 +87,11 @@ public class ShopInventoryManager : MonoBehaviour
         }
     }
 
+
+    public void UpdateDescription(string text)
+    {
+        description.text = text;
+    }
 
 
    
