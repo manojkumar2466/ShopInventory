@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class ShopItem : MonoBehaviour
 {
 
     [SerializeField]private Image image;
+    [SerializeField] private TextMeshProUGUI count;
 
 
     //data
@@ -34,10 +36,12 @@ public class ShopItem : MonoBehaviour
         image.sprite = itemIcon;
         button = GetComponent<Button>();
         button.onClick.AddListener(OnButtonClick);
+        count.text = quantityAvailable.ToString();
     }
 
     void OnButtonClick()
     {
+        
         ShopInventoryManager.Instance.UpdateDescription(description);
     }
     
