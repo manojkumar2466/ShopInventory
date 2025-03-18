@@ -8,8 +8,8 @@ using TMPro;
 [CreateAssetMenu(fileName ="ShopItemType", menuName="Shop/ShopItemType")]
 public class ShopItemTypesSO : ScriptableObject
 {
-    public Image displayImage;
-    public TextMeshProUGUI description;
+    public Sprite icon;
+    public string description;
     public EShopItemType shopItemType;
-    public List<ShopItem> itemsList;
+    public List<ShopItemSO> itemsList;
 }

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a20327d119ea2e6498088a642c6c6c63, type: 3}
+  m_Name: Treasure_data
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 3faa68d4e2f05f04786133598667ac36, type: 3}
+  description: this is the currency in the game. using currency you can buy things!
+  shopItemType: 3
+  itemsList:
+  - {fileID: 11400000, guid: 2ec6653302ba0304684770493396fe7d, type: 2}
+  - {fileID: 11400000, guid: bf2263a861a43b147ae68291eedc88a8, type: 2}
+  - {fileID: 11400000, guid: 4d10b0d409a33f54cb31daa05efdd3f6, type: 2}
+  - {fileID: 11400000, guid: af9a4b5008e222248b64509692be0b38, type: 2}
+  - {fileID: 11400000, guid: 15f5c0d4c6d36df4d8b744fecc57ac4d, type: 2}
+  - {fileID: 11400000, guid: 07fda3243a9d09a45b98eee6976a37f4, type: 2}
+  - {fileID: 11400000, guid: a2379cc5f4116b84c96b36479180509a, type: 2}
+  - {fileID: 11400000, guid: d4e728a5fd94e3348b56c17e04285dee, type: 2}
+  - {fileID: 11400000, guid: ce5692f5f05b25f4794ad2243a9a82e5, type: 2}
+  - {fileID: 11400000, guid: 66951dcb272642d469460cd7c1b43354, type: 2}
+  - {fileID: 11400000, guid: 5fa81477bb6e40245a30f1519001595b, type: 2}
+  - {fileID: 11400000, guid: 484fe6d7a759f524383c4a4911876e83, type: 2}
+  - {fileID: 11400000, guid: 3f38c1497c98cb54abdbbb3c77cd007c, type: 2}
