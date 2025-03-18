@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
+
 public class ShopItem : MonoBehaviour
 {
 
@@ -21,8 +23,11 @@ public class ShopItem : MonoBehaviour
     private int quantityAvailable;
     private string description;
     private Button button;
+    private bool isDescriptionDisplayed = false;
+    public int ID;
+    public EShopItemStatus status = EShopItemStatus.Unsold;
 
-    public void Initialize(ShopItemSO data)
+    public void Initialize(ShopItemSO data, int id)
     {
         itemName = data.itemName;
         itemIcon = data.itemIcon;
@@ -37,13 +42,41 @@ public class ShopItem : MonoBehaviour
         button = GetComponent<Button>();
         button.onClick.AddListener(OnButtonClick);
         count.text = quantityAvailable.ToString();
+        ID = id;
+
     }
 
     void OnButtonClick()
-    {
-        
+    {        
         ShopInventoryManager.Instance.UpdateDescription(description);
+        isDescriptionDisplayed = true;
+        DisplayBuyPopup();
     }
-    
-    
+
+    private void DisplayBuyPopup()
+    {
+        //disable clicks allover the screen except newly activated popup.
+    }
+
+    private void OnItemPurchased()
+    {
+
+    }
+
+    private void DisableBuyPopup()
+    {
+
+    }
+
+    private void OnEnable()
+    {
+        isDescriptionDisplayed = false;
+    }
+
+    private void OnDisable()
+    {
+        isDescriptionDisplayed = false;
+    }
+
+
 }

@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -2177843706873438106, guid: 0cfca6a543f760644aca5488b98adff5, type: 3}
+      propertyPath: shopitemType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2177843706873438106, guid: 0cfca6a543f760644aca5488b98adff5, type: 3}
       propertyPath: items.Array.size
       value: 8
       objectReference: {fileID: 0}

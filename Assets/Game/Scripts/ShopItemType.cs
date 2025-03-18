@@ -5,22 +5,28 @@ using UnityEngine.UI;
 
 public class ShopItemType : MonoBehaviour
 {
-
-    private EShopItemType shopitemType;
+    [SerializeField] Image iconImage;
+    public EShopItemType shopitemType;
     [SerializeField] List<ShopItemSO> itemsData;
     private GameObject shopItemContent;
     private ShopInventoryManager shopmanager;
-    private List<ShopItem> items= new List<ShopItem>();
+    private List<ShopItem> itemsCreated= new List<ShopItem>();
     public int myId;
     private Button button;
+    ShopItemTypesSO shopTypeData;   
 
-    void Start()
+    public void Instantiate(ShopItemTypesSO data)
     {
+        shopTypeData = data;
+        iconImage.sprite = data.icon;
+        shopitemType = data.shopItemType;
         shopmanager = ShopInventoryManager.Instance;
         shopItemContent = shopmanager.itemContent;
+        itemsData = data.itemsList;
         GenerateItems();
         button = GetComponent<Button>();
         button.onClick.AddListener(OnButtonSelected);
+        
     }
 
     private void GenerateItems()
@@ -36,46 +42,45 @@ public class ShopItemType : MonoBehaviour
                 
                 GameObject item = Instantiate(shopmanager.ShopItemBlueprintObject);
                 ShopItem shopItem = item.GetComponent<ShopItem>();
-                shopItem.Initialize(itemsData[index]);
+                shopItem.Initialize(itemsData[index], index);
                 item.transform.SetParent(shopItemContent.transform);
-                items.Add(shopItem);
+                itemsCreated.Add(shopItem);
             }
 
         }
     }
-
-    public void OnDeselected()
-    {
-        if(items!=null && items.Count > 0)
-        {
-            for(int index=0; index<items.Count; index++)
-            {
-                items[index].gameObject.SetActive(false);
-            }
-        }
-    }
+   
 
     public void OnButtonSelected()
     {
         ShopInventoryManager.Instance.currentActiveTab = myId;
         ShopInventoryManager.Instance.HandleTabs();
+        ShopInventoryManager.Instance.UpdateDescription(shopTypeData.description);
     }
 
-    public void OnSelected()
-    {
 
-        if (items != null && items.Count > 0)
+    public void DeactiveShopItemsonUI()
+    {
+        if (itemsCreated != null)
         {
-            for (int index = 0; index < items.Count; index++)
+            for(int index=0; index< itemsCreated.Count; index++)
             {
-                items[index].gameObject.SetActive(true);
+                itemsCreated[index].gameObject.SetActive(false);
             }
         }
+    }
 
-    }
-    // Update is called once per frame
-    void Update()
+    public void ActivateShopItemonUI()
     {
-        
+
+        if (itemsCreated != null)
+        {
+            for (int index = 0; index < itemsCreated.Count; index++)
+            {
+                itemsCreated[index].gameObject.SetActive(true);
+            }
+        }
     }
+   
+    
 }
