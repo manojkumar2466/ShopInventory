@@ -25,19 +25,21 @@ public class ShopItem : MonoBehaviour
     private Button button;
     private bool isDescriptionDisplayed = false;
     public int ID;
+    [SerializeField] TextMeshProUGUI currentCountText;
     public EShopItemStatus status = EShopItemStatus.Unsold;
-
+    public ShopItemSO shopItemdata { get; private set; }
     public void Initialize(ShopItemSO data, int id)
     {
-        itemName = data.itemName;
-        itemIcon = data.itemIcon;
-        itemtype = data.itemtype;
-        sellingPrice = data.sellingPrice;
-        buyingPrice = data.buyingPrice;
-        weight = data.weight;
-        rarity = data.rarity;
-        quantityAvailable = data.quantityAvailable;
-        description = data.description;
+        shopItemdata = data;
+        itemName = shopItemdata.itemName;
+        itemIcon = shopItemdata.itemIcon;
+        itemtype = shopItemdata.itemtype;
+        sellingPrice = shopItemdata.sellingPrice;
+        buyingPrice = shopItemdata.buyingPrice;
+        weight = shopItemdata.weight;
+        rarity = shopItemdata.rarity;
+        quantityAvailable = shopItemdata.quantityAvailable;
+        description = shopItemdata.description;
         image.sprite = itemIcon;
         button = GetComponent<Button>();
         button.onClick.AddListener(OnButtonClick);
@@ -46,8 +48,18 @@ public class ShopItem : MonoBehaviour
 
     }
 
+    public void RefreshShopItemUI()
+    {
+        currentCountText.text = quantityAvailable.ToString();
+    }
+
     void OnButtonClick()
     {        
+        if(isDescriptionDisplayed)
+        {
+            ShopInventoryManager.Instance.EnableBuyPopup(this);
+            return;
+        }
         ShopInventoryManager.Instance.UpdateDescription(description);
         isDescriptionDisplayed = true;
         DisplayBuyPopup();
@@ -58,15 +70,16 @@ public class ShopItem : MonoBehaviour
         //disable clicks allover the screen except newly activated popup.
     }
 
-    private void OnItemPurchased()
-    {
 
+    //called  on purchased or on selling item 
+    public void OnItemPurchasedOrSell(int count)
+    {
+        quantityAvailable -= count;
+        RefreshShopItemUI();
     }
 
-    private void DisableBuyPopup()
-    {
-
-    }
+   
+   
 
     private void OnEnable()
     {

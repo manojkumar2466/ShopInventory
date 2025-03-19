@@ -36,6 +36,8 @@ public class ShopInventoryManager : MonoBehaviour
     public int currentActiveTab;
     public GameObject ShopItemBlueprintObject;
     public GameObject ShopTypeItemBlueprintObject;
+    [SerializeField] private GameObject BuyPopupGameobject;
+    private BuyPopup buyPopup;
     [SerializeField] private List<ShopItemTypesSO> ItemTypeDataList;
    
 
@@ -72,6 +74,8 @@ public class ShopInventoryManager : MonoBehaviour
             currentActiveTab = 0;
             HandleTabs();
         }
+        DisableBuyPopup();
+        buyPopup = BuyPopupGameobject.GetComponent<BuyPopup>();
         
 
     }
@@ -102,6 +106,14 @@ public class ShopInventoryManager : MonoBehaviour
         description.text = text;
     }
 
-
+    public void EnableBuyPopup(ShopItem shopItem)
+    {
+        buyPopup.SetBuyPopup(shopItem);
+        BuyPopupGameobject.SetActive(true);
+    }
+    public void DisableBuyPopup()
+    {
+        BuyPopupGameobject.SetActive(false);
+    }
    
 }

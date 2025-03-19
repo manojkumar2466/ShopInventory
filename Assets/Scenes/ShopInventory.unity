@@ -1020,10 +1020,10 @@ RectTransform:
   m_Father: {fileID: 1377002073}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &428608805
 MonoBehaviour:
@@ -1047,8 +1047,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Buy!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e8377fd4901158d4686a309a16e8646d, type: 2}
+  m_sharedMaterial: {fileID: 5170205333681046405, guid: e8377fd4901158d4686a309a16e8646d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1396,7 +1396,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &482197091
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1413,10 +1413,10 @@ RectTransform:
   m_Father: {fileID: 1305457337}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 800, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &482197092
 MonoBehaviour:
@@ -1468,13 +1468,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62ad45ce411ed42458f8a5e5c3d92cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currencyIcon: {fileID: 1104886354}
+  currencyIcon: {fileID: 0}
   shopItemIcon: {fileID: 858600623}
   ItemName: {fileID: 783809746}
   totalPrice: {fileID: 441235748}
   quantityText: {fileID: 693426123}
   buyButton: {fileID: 1377002074}
   CancelButton: {fileID: 1355296232}
+  plusButton: {fileID: 454087411}
+  minusButton: {fileID: 392305645}
 --- !u!1 &510129134
 GameObject:
   m_ObjectHideFlags: 0
@@ -2529,82 +2531,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
---- !u!1 &1104886352
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1104886353}
-  - component: {fileID: 1104886355}
-  - component: {fileID: 1104886354}
-  m_Layer: 5
-  m_Name: CurrencyImage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1104886353
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1104886352}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1639035619}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 27, y: 0.0000003181267}
-  m_SizeDelta: {x: 49.1463, y: 44.269}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1104886354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1104886352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1104886355
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1104886352}
-  m_CullTransparentMesh: 1
 --- !u!1 &1193167682
 GameObject:
   m_ObjectHideFlags: 0
@@ -3874,7 +3800,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 441235747}
-  - {fileID: 1104886353}
   m_Father: {fileID: 172453266}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4231,10 +4156,10 @@ RectTransform:
   m_Father: {fileID: 1355296231}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1819329554
 MonoBehaviour:
@@ -4258,8 +4183,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Cancel
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e8377fd4901158d4686a309a16e8646d, type: 2}
+  m_sharedMaterial: {fileID: 5170205333681046405, guid: e8377fd4901158d4686a309a16e8646d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4705,6 +4630,7 @@ MonoBehaviour:
   currentActiveTab: 0
   ShopItemBlueprintObject: {fileID: 7008569783587701270, guid: ab2741ea3d5fe414ea39bb3d8f82b7e5, type: 3}
   ShopTypeItemBlueprintObject: {fileID: 5903655195033274145, guid: 0cfca6a543f760644aca5488b98adff5, type: 3}
+  BuyPopupGameobject: {fileID: 482197090}
   ItemTypeDataList:
   - {fileID: 11400000, guid: 4361c2876d6e22d4fa270e961ab54575, type: 2}
   - {fileID: 11400000, guid: 6053cc270736f674b8b3090ebebf24c7, type: 2}

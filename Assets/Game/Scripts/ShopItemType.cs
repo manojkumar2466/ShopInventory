@@ -15,6 +15,7 @@ public class ShopItemType : MonoBehaviour
     private Button button;
     ShopItemTypesSO shopTypeData;   
 
+
     public void Instantiate(ShopItemTypesSO data)
     {
         shopTypeData = data;
