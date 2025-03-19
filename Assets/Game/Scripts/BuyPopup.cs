@@ -66,12 +66,13 @@ public class BuyPopup : MonoBehaviour
 
     private void OnBuyButtonClicked()
     {
-        currentShopItem.OnItemPurchasedOrSell(currentItemPurchaseCount);
+        currentShopItem.OnItemPurchasedFromShop(currentItemPurchaseCount);
         this.gameObject.SetActive(false);
     }
 
     private void OnCancelButtonClicked()
     {
+        currentShopItem.OnPurchaseUnsuccessful();
         this.gameObject.SetActive(false);
     }
 

@@ -19,5 +19,5 @@ MonoBehaviour:
   buyingPrice: 100
   weight: 16
   rarity: 2
-  quantityAvailable: 1
+  quantityAvailable: 98
   description: super strong iron shield

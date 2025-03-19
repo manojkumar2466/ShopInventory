@@ -19,5 +19,5 @@ MonoBehaviour:
   buyingPrice: 15
   weight: 5
   rarity: 0
-  quantityAvailable: 50
+  quantityAvailable: 95
   description: Bread to eat

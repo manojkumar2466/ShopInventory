@@ -19,5 +19,5 @@ MonoBehaviour:
   buyingPrice: 100
   weight: 16
   rarity: 3
-  quantityAvailable: 10
+  quantityAvailable: 1
   description: Blue potion

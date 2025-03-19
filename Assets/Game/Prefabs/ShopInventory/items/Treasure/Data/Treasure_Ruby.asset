@@ -19,5 +19,5 @@ MonoBehaviour:
   buyingPrice: 250
   weight: 11
   rarity: 4
-  quantityAvailable: 7
+  quantityAvailable: 98
   description: expensive legendary treasure Ruby

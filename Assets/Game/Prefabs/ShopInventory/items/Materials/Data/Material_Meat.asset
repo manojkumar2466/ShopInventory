@@ -19,5 +19,5 @@ MonoBehaviour:
   buyingPrice: 50
   weight: 15
   rarity: 2
-  quantityAvailable: 15
+  quantityAvailable: 1
   description: 'Meat '

@@ -19,5 +19,5 @@ MonoBehaviour:
   buyingPrice: 35
   weight: 12
   rarity: 1
-  quantityAvailable: 8
+  quantityAvailable: 80
   description: Cheese

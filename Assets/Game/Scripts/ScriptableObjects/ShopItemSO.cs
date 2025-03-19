@@ -16,4 +16,17 @@ public class ShopItemSO :ScriptableObject
      public ERarity rarity;
      public int quantityAvailable;
      public string description;
+
+    public ShopItemSO(ShopItemSO data)
+    {
+        itemName = data.itemName;
+        itemIcon = data.itemIcon;
+        itemtype = data.itemtype;
+        sellingPrice = data.sellingPrice;
+        buyingPrice = data.buyingPrice;
+        weight = data.weight;
+        rarity = data.rarity;
+        quantityAvailable = data.quantityAvailable;
+        description = data.description;
+    }
 }

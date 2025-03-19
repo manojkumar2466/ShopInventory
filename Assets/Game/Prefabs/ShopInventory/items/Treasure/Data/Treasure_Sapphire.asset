@@ -19,5 +19,5 @@ MonoBehaviour:
   buyingPrice: 245
   weight: 18
   rarity: 4
-  quantityAvailable: 9
+  quantityAvailable: 99
   description: expensive legendary treasure Sapphire

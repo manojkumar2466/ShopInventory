@@ -2765,6 +2765,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 61360c2f27001df4588ea201559aedd6, type: 2}
   - {fileID: 11400000, guid: eed6569b17bae084f93dde7f0bf8aa74, type: 2}
   typeContent: {fileID: 1542507796}
+  itemContent: {fileID: 1005949281}
   shopTypePrefab: {fileID: 5903655195033274145, guid: 0cfca6a543f760644aca5488b98adff5, type: 3}
 --- !u!1 &1305457336
 GameObject:

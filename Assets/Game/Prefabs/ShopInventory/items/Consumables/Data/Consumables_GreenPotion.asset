@@ -19,5 +19,5 @@ MonoBehaviour:
   buyingPrice: 30
   weight: 8
   rarity: 1
-  quantityAvailable: 15
+  quantityAvailable: 100
   description: Green half

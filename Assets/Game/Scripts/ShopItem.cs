@@ -15,12 +15,12 @@ public class ShopItem : MonoBehaviour
     //data
     private string itemName;
     private Sprite itemIcon;
-    private EShopItemType itemtype;
+    public EShopItemType shopItemtype;
     private int sellingPrice;
     private int buyingPrice;
     private int weight;
     private ERarity rarity;
-    private int quantityAvailable;
+    public int quantityAvailable;
     private string description;
     private Button button;
     private bool isDescriptionDisplayed = false;
@@ -28,12 +28,13 @@ public class ShopItem : MonoBehaviour
     [SerializeField] TextMeshProUGUI currentCountText;
     public EShopItemStatus status = EShopItemStatus.Unsold;
     public ShopItemSO shopItemdata { get; private set; }
-    public void Initialize(ShopItemSO data, int id)
+    public EInventoryType inventoryType=EInventoryType.Shop;
+    public void Initialize(ShopItemSO data)
     {
         shopItemdata = data;
         itemName = shopItemdata.itemName;
         itemIcon = shopItemdata.itemIcon;
-        itemtype = shopItemdata.itemtype;
+        shopItemtype = shopItemdata.itemtype;
         sellingPrice = shopItemdata.sellingPrice;
         buyingPrice = shopItemdata.buyingPrice;
         weight = shopItemdata.weight;
@@ -44,10 +45,15 @@ public class ShopItem : MonoBehaviour
         button = GetComponent<Button>();
         button.onClick.AddListener(OnButtonClick);
         count.text = quantityAvailable.ToString();
-        ID = id;
 
     }
 
+    public void AddItemCount(int count)
+    {
+        quantityAvailable+=count;
+        shopItemdata.quantityAvailable=quantityAvailable;
+
+    }
     public void RefreshShopItemUI()
     {
         currentCountText.text = quantityAvailable.ToString();
@@ -62,21 +68,33 @@ public class ShopItem : MonoBehaviour
         }
         ShopInventoryManager.Instance.UpdateDescription(description);
         isDescriptionDisplayed = true;
-        DisplayBuyPopup();
+       
     }
 
-    private void DisplayBuyPopup()
-    {
-        //disable clicks allover the screen except newly activated popup.
-    }
+    
 
 
     //called  on purchased or on selling item 
-    public void OnItemPurchasedOrSell(int count)
+    public void OnItemPurchasedFromShop(int count)
     {
         quantityAvailable -= count;
+        shopItemdata.quantityAvailable = quantityAvailable;        
+        PlayerInventoryManager.Instance.OnItemPurchased(this, count);
         RefreshShopItemUI();
+        isDescriptionDisplayed = false;
+
     }
+
+    public void  OnPurchaseUnsuccessful()
+    {
+        isDescriptionDisplayed = false;
+    }
+
+    public void OnItemSoldFromInventory(int count)
+    {
+
+    }
+
 
    
    

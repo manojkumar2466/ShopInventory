@@ -8,10 +8,14 @@ public class PlayerInventoryManager : MonoBehaviour
     private static PlayerInventoryManager instance;
 
     [SerializeField] private List<ShopItemTypesSO> typeListData;
-    [SerializeField] private GameObject typeContent;
+    [SerializeField] public GameObject typeContent;
+    [SerializeField] public GameObject itemContent;
     private List<ShopItemType> currentShopTypeList = new List<ShopItemType>();
     [SerializeField] private GameObject shopTypePrefab;
 
+    public int currentActiveTab;
+    private int currentWeight;
+    private int maxWeight;
     
 
     private void Awake()
@@ -37,19 +41,45 @@ public class PlayerInventoryManager : MonoBehaviour
                 ShopItemType shopType = Tab.GetComponent<ShopItemType>();
                 Tab.transform.SetParent(typeContent.transform);
                 shopType.Instantiate(typeListData[index]);
+                currentShopTypeList.Add(shopType);
+                shopType.myId = index;
+            }
+            currentActiveTab = 0;
+        }
+    }
 
+    public void HandleTabs()
+    {
+        if (currentShopTypeList != null && currentShopTypeList.Count > 0)
+        {
+            for (int index = 0; index < currentShopTypeList.Count; index++)
+            {
+                if (index == currentActiveTab)
+                {
+                    currentShopTypeList[index].ActivateShopItemonUI();
+                }
+                else if (index != currentActiveTab)
+                {
+
+                    currentShopTypeList[index].DeactiveShopItemsonUI();
+                }
             }
         }
     }
-        
 
-    public void OnItemPurchased(ShopItem item)
+    public void OnItemPurchased(ShopItem item,int count)
     {
         //if item is not already purchased before
         for(int index=0; index< currentShopTypeList.Count; index++)
         {
-            
+            if(item.shopItemtype==currentShopTypeList[index].shopitemType)
+            {
+                currentShopTypeList[index].AddPurchasedShopItemToPlayerInventory(item, count);
+                currentActiveTab = index;
+                break;
+            }
         }
+        HandleTabs();
         //if not just increase count
         //deacrese money from wallet
         //decrease item count in shop

@@ -13,6 +13,12 @@ public enum EShopItemType
     Treasure
 }
 
+
+public enum EInventoryType
+{
+    Shop,
+    Player
+}
 public enum EShopItemStatus
 {
     Unsold,

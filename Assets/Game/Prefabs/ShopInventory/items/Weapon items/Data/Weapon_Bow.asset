@@ -19,5 +19,5 @@ MonoBehaviour:
   buyingPrice: 65
   weight: 10
   rarity: 1
-  quantityAvailable: 1
+  quantityAvailable: 98
   description: Bow

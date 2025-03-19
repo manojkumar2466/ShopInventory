@@ -19,5 +19,5 @@ MonoBehaviour:
   buyingPrice: 30
   weight: 10
   rarity: 1
-  quantityAvailable: 10
+  quantityAvailable: 100
   description: Candle

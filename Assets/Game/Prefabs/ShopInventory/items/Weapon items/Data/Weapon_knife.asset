@@ -19,5 +19,5 @@ MonoBehaviour:
   buyingPrice: 25
   weight: 8
   rarity: 0
-  quantityAvailable: 15
+  quantityAvailable: 80
   description: hand knife
