@@ -19,5 +19,5 @@ MonoBehaviour:
   buyingPrice: 150
   weight: 18
   rarity: 3
-  quantityAvailable: 1
+  quantityAvailable: 90
   description: 'Light weight silver sword '

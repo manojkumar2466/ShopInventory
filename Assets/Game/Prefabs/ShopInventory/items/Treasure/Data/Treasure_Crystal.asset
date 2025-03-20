@@ -19,5 +19,5 @@ MonoBehaviour:
   buyingPrice: 160
   weight: 6
   rarity: 3
-  quantityAvailable: 15
+  quantityAvailable: 90
   description: A epic treasure crystal

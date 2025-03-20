@@ -436,3 +436,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 3991699689570140257}
   count: {fileID: 7059329544431270166}
+  ID: 0
+  currentCountText: {fileID: 7059329544431270166}
+  status: 0

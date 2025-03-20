@@ -13,6 +13,17 @@ public enum EShopItemType
     Treasure
 }
 
+
+public enum EInventoryType
+{
+    Shop,
+    Player
+}
+public enum EShopItemStatus
+{
+    Unsold,
+    sold
+}
 public enum ERarity
 {
     VeryCommon,
@@ -30,8 +41,12 @@ public class ShopInventoryManager : MonoBehaviour
     private List<ShopItemType> typeList = new List<ShopItemType>(); 
     public int currentActiveTab;
     public GameObject ShopItemBlueprintObject;
-
+    public GameObject ShopTypeItemBlueprintObject;
+    [SerializeField] private GameObject BuyPopupGameobject;
+    private Popup buyPopup;
+    [SerializeField] private List<ShopItemTypesSO> ItemTypeDataList;
    
+
     [SerializeField] private TextMeshProUGUI description;
 
     private static ShopInventoryManager instance;
@@ -50,38 +65,56 @@ public class ShopInventoryManager : MonoBehaviour
     }
     void Start()
     {
-        if (shopItemTypesList.Count > 0)
+        if(ItemTypeDataList!=null && ItemTypeDataList.Count>0)
         {
-            for(int index=0; index< shopItemTypesList.Count; index++)
+
+            for(int index=0; index<ItemTypeDataList.Count; index++)
             {
-                GameObject shopItemType = Instantiate(shopItemTypesList[index]);
-                shopItemType.transform.SetParent(itemtypcontent.transform);
-                ShopItemType itemType = shopItemType.GetComponent<ShopItemType>();
-                if (itemType)
-                {
-                    itemType.myId = index;
-                }
-                typeList.Add(itemType);
+                GameObject tab = Instantiate(ShopTypeItemBlueprintObject);
+                tab.transform.SetParent(itemtypcontent.transform);
+                ShopItemType shopType = tab.GetComponent<ShopItemType>();
+                shopType.Instantiate(ItemTypeDataList[index]);
+                shopType.myId = index;
+                typeList.Add(shopType);
             }
             currentActiveTab = 0;
             HandleTabs();
         }
+        DisableBuyPopup();
+        buyPopup = BuyPopupGameobject.GetComponent<Popup>();
         
+
     }
 
+
+    public void OnItemSoldBack(ShopItem item, int count)
+    {
+        if (typeList != null)
+        {
+            for(int index=0; index< typeList.Count; index++)
+            {
+                if (typeList[index].shopitemType == item.shopItemtype)
+                {
+                    typeList[index].AddItemToInventory(item, count);
+                }
+            }
+        }
+    }
     public void HandleTabs()
     {
         if (typeList != null && typeList.Count > 0)
         {
-            for(int index=0; index<typeList.Count; index++)
+            for(int index=0; index< typeList.Count; index++)
             {
-                if (index == currentActiveTab)
+                if(index==currentActiveTab)
                 {
-                    typeList[index].OnSelected();
+                    
+                    typeList[index].ActivateShopItemonUI();
                 }
-                else
+                else if( index != currentActiveTab)
                 {
-                    typeList[index].OnDeselected();
+                    
+                    typeList[index].DeactiveShopItemsonUI();
                 }
             }
         }
@@ -93,6 +126,14 @@ public class ShopInventoryManager : MonoBehaviour
         description.text = text;
     }
 
-
+    public void EnableBuyPopup(ShopItem shopItem)
+    {
+        buyPopup.SetPopup(shopItem);
+        BuyPopupGameobject.SetActive(true);
+    }
+    public void DisableBuyPopup()
+    {
+        BuyPopupGameobject.SetActive(false);
+    }
    
 }

@@ -19,5 +19,5 @@ MonoBehaviour:
   buyingPrice: 200
   weight: 25
   rarity: 4
-  quantityAvailable: 1
+  quantityAvailable: 92
   description: 'Legendary golden sword. it is so strong and can kill enemy easily '

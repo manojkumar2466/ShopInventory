@@ -19,5 +19,5 @@ MonoBehaviour:
   buyingPrice: 95
   weight: 15
   rarity: 2
-  quantityAvailable: 1
+  quantityAvailable: 100
   description: 'super strong iron sword '

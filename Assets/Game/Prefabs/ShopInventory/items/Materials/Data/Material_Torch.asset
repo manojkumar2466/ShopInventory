@@ -19,5 +19,5 @@ MonoBehaviour:
   buyingPrice: 65
   weight: 18
   rarity: 4
-  quantityAvailable: 2
+  quantityAvailable: 90
   description: torch

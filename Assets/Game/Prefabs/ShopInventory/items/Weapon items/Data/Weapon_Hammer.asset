@@ -19,5 +19,5 @@ MonoBehaviour:
   buyingPrice: 70
   weight: 12
   rarity: 1
-  quantityAvailable: 1
+  quantityAvailable: 83
   description: iron Hammer

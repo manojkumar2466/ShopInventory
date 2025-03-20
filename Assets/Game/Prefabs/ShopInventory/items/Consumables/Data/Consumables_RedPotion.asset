@@ -19,5 +19,5 @@ MonoBehaviour:
   buyingPrice: 130
   weight: 20
   rarity: 4
-  quantityAvailable: 5
+  quantityAvailable: 100
   description: RedPotion

@@ -5,22 +5,39 @@ using UnityEngine.UI;
 
 public class ShopItemType : MonoBehaviour
 {
-
-    private EShopItemType shopitemType;
+    [SerializeField] Image iconImage;
+    public EShopItemType shopitemType;
     [SerializeField] List<ShopItemSO> itemsData;
     private GameObject shopItemContent;
-    private ShopInventoryManager shopmanager;
-    private List<ShopItem> items= new List<ShopItem>();
+    private List<ShopItem> itemsCreated= new List<ShopItem>();
     public int myId;
     private Button button;
+    ShopItemTypesSO shopTypeData;
+    public EInventoryType inventoryType;
 
-    void Start()
+
+    public void Instantiate(ShopItemTypesSO data)
     {
-        shopmanager = ShopInventoryManager.Instance;
-        shopItemContent = shopmanager.itemContent;
+        shopTypeData = data;
+        iconImage.sprite = data.icon;
+        shopitemType = data.shopItemType;
+        inventoryType = data.inventoryType;
+        if (inventoryType == EInventoryType.Shop)
+        {
+         
+            shopItemContent = ShopInventoryManager.Instance.itemContent;
+
+        }
+        else if (inventoryType == EInventoryType.Player)
+        {
+            shopItemContent = PlayerInventoryManager.Instance.itemContent;
+        }
+        
+        itemsData = data.itemsList;
         GenerateItems();
         button = GetComponent<Button>();
         button.onClick.AddListener(OnButtonSelected);
+        
     }
 
     private void GenerateItems()
@@ -33,49 +50,88 @@ public class ShopItemType : MonoBehaviour
         {
             for(int index=0; index< itemsData.Count; index++)
             {
-                
-                GameObject item = Instantiate(shopmanager.ShopItemBlueprintObject);
-                ShopItem shopItem = item.GetComponent<ShopItem>();
-                shopItem.Initialize(itemsData[index]);
-                item.transform.SetParent(shopItemContent.transform);
-                items.Add(shopItem);
+                CreateShopItem(itemsData[index]);
             }
 
         }
     }
 
-    public void OnDeselected()
+    private void CreateShopItem(ShopItemSO data)
     {
-        if(items!=null && items.Count > 0)
-        {
-            for(int index=0; index<items.Count; index++)
-            {
-                items[index].gameObject.SetActive(false);
-            }
-        }
+        GameObject item = Instantiate(ShopInventoryManager.Instance.ShopItemBlueprintObject);
+        ShopItem shopItem = item.GetComponent<ShopItem>();
+        shopItem.Initialize(data, this);
+        item.transform.SetParent(shopItemContent.transform);
+        itemsCreated.Add(shopItem);
     }
 
     public void OnButtonSelected()
     {
-        ShopInventoryManager.Instance.currentActiveTab = myId;
-        ShopInventoryManager.Instance.HandleTabs();
-    }
-
-    public void OnSelected()
-    {
-
-        if (items != null && items.Count > 0)
+        if (inventoryType == EInventoryType.Shop)
         {
-            for (int index = 0; index < items.Count; index++)
-            {
-                items[index].gameObject.SetActive(true);
-            }
+            ShopInventoryManager.Instance.currentActiveTab = myId;
+            ShopInventoryManager.Instance.HandleTabs();
+            ShopInventoryManager.Instance.UpdateDescription(shopTypeData.description);
+            return;
         }
 
+        PlayerInventoryManager.Instance.currentActiveTab = myId;
+        PlayerInventoryManager.Instance.HandleTabs();
     }
-    // Update is called once per frame
-    void Update()
+
+
+    public void DeactiveShopItemsonUI()
     {
-        
+        if (itemsCreated != null)
+        {
+            for(int index=0; index< itemsCreated.Count; index++)
+            {
+                itemsCreated[index].gameObject.SetActive(false);
+            }
+        }
     }
+
+    public void ActivateShopItemonUI()
+    {
+
+        if (itemsCreated != null)
+        {
+            for (int index = 0; index < itemsCreated.Count; index++)
+            {
+                itemsCreated[index].gameObject.SetActive(true);
+            }
+        }
+    }
+
+
+    public void AddItemToInventory(ShopItem item, int count)
+    {
+       ShopItem newShopItem= itemsCreated.Find(shopItem => shopItem.shopItemdata.itemName.Equals(item.shopItemdata.itemName));
+        if (newShopItem)
+        {
+            newShopItem.AddItemCount(count);
+            itemsCreated.Add(newShopItem);
+            newShopItem.RefreshShopItemUI();
+        }
+        else if (!newShopItem)
+        {
+            GameObject obj = Instantiate(ShopInventoryManager.Instance.ShopItemBlueprintObject);
+            ShopItem shopItem = obj.GetComponent<ShopItem>();
+            shopItem.inventoryType = EInventoryType.Player;
+            ShopItemSO data = new ShopItemSO(item.shopItemdata);
+            shopItem.Initialize(data, this);
+            
+            shopItem.quantityAvailable = count;
+            
+            obj.transform.SetParent(shopItemContent.transform);
+            itemsCreated.Add(shopItem);
+            shopItem.RefreshShopItemUI();
+        }
+    }
+
+    public void RemoveItem(ShopItem item)
+    {
+        itemsCreated.Remove(item);
+    }
+    
 }

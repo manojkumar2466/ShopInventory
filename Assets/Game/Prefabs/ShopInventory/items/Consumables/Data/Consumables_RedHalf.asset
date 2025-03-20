@@ -19,5 +19,5 @@ MonoBehaviour:
   buyingPrice: 95
   weight: 15
   rarity: 3
-  quantityAvailable: 9
+  quantityAvailable: 100
   description: Red half Potion

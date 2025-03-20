@@ -11,5 +11,7 @@ public class ShopItemTypesSO : ScriptableObject
     public Sprite icon;
     public string description;
     public EShopItemType shopItemType;
+    public EInventoryType inventoryType;
     public List<ShopItemSO> itemsList;
+    
 }

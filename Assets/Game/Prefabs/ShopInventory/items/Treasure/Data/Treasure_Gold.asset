@@ -19,5 +19,5 @@ MonoBehaviour:
   buyingPrice: 120
   weight: 5
   rarity: 3
-  quantityAvailable: 10
+  quantityAvailable: 1
   description: 'A epic treasure. '

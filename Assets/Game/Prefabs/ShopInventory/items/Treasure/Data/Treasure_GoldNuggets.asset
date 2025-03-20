@@ -19,5 +19,5 @@ MonoBehaviour:
   buyingPrice: 12
   weight: 1
   rarity: 0
-  quantityAvailable: 150
+  quantityAvailable: 98
   description: gold nuggets

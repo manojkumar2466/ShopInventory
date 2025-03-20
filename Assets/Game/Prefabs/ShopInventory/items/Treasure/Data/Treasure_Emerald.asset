@@ -19,5 +19,5 @@ MonoBehaviour:
   buyingPrice: 240
   weight: 10
   rarity: 4
-  quantityAvailable: 5
+  quantityAvailable: 89
   description: expensive legendary treasure

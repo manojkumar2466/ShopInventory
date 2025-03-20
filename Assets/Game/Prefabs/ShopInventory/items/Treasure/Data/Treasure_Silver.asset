@@ -19,5 +19,5 @@ MonoBehaviour:
   buyingPrice: 60
   weight: 3
   rarity: 1
-  quantityAvailable: 50
+  quantityAvailable: 98
   description: Silver treasure
