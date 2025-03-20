@@ -43,7 +43,7 @@ public class ShopInventoryManager : MonoBehaviour
     public GameObject ShopItemBlueprintObject;
     public GameObject ShopTypeItemBlueprintObject;
     [SerializeField] private GameObject BuyPopupGameobject;
-    private BuyPopup buyPopup;
+    private Popup buyPopup;
     [SerializeField] private List<ShopItemTypesSO> ItemTypeDataList;
    
 
@@ -81,11 +81,25 @@ public class ShopInventoryManager : MonoBehaviour
             HandleTabs();
         }
         DisableBuyPopup();
-        buyPopup = BuyPopupGameobject.GetComponent<BuyPopup>();
+        buyPopup = BuyPopupGameobject.GetComponent<Popup>();
         
 
     }
 
+
+    public void OnItemSoldBack(ShopItem item, int count)
+    {
+        if (typeList != null)
+        {
+            for(int index=0; index< typeList.Count; index++)
+            {
+                if (typeList[index].shopitemType == item.shopItemtype)
+                {
+                    typeList[index].AddItemToInventory(item, count);
+                }
+            }
+        }
+    }
     public void HandleTabs()
     {
         if (typeList != null && typeList.Count > 0)
@@ -114,7 +128,7 @@ public class ShopInventoryManager : MonoBehaviour
 
     public void EnableBuyPopup(ShopItem shopItem)
     {
-        buyPopup.SetBuyPopup(shopItem);
+        buyPopup.SetPopup(shopItem);
         BuyPopupGameobject.SetActive(true);
     }
     public void DisableBuyPopup()

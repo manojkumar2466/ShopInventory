@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 
 public class PlayerInventoryManager : MonoBehaviour
 {
@@ -12,10 +13,17 @@ public class PlayerInventoryManager : MonoBehaviour
     [SerializeField] public GameObject itemContent;
     private List<ShopItemType> currentShopTypeList = new List<ShopItemType>();
     [SerializeField] private GameObject shopTypePrefab;
+    [SerializeField] private GameObject popUpObject;
+    [SerializeField] public TextMeshProUGUI itemWeightText;
+    [SerializeField] public TextMeshProUGUI currencyText;
+    private Popup popUp;
 
     public int currentActiveTab;
-    private int currentWeight;
-    private int maxWeight;
+    public int itemsCurrentWeight;
+    public int itemMaxWeight;
+
+    public int currentCurrency;
+    public int currentItemWeight;
     
 
     private void Awake()
@@ -33,6 +41,12 @@ public class PlayerInventoryManager : MonoBehaviour
 
     private void Start()
     {
+        itemMaxWeight = 500;
+        currentCurrency = 1000;
+        itemsCurrentWeight = 0;
+        currencyText.text = currentCurrency.ToString();
+        itemWeightText.text = currentItemWeight.ToString();
+
         if (typeListData!=null)
         {
             for (int index = 0; index < typeListData.Count; index++)
@@ -46,6 +60,7 @@ public class PlayerInventoryManager : MonoBehaviour
             }
             currentActiveTab = 0;
         }
+        popUp = popUpObject.GetComponent<Popup>();
     }
 
     public void HandleTabs()
@@ -74,7 +89,7 @@ public class PlayerInventoryManager : MonoBehaviour
         {
             if(item.shopItemtype==currentShopTypeList[index].shopitemType)
             {
-                currentShopTypeList[index].AddPurchasedShopItemToPlayerInventory(item, count);
+                currentShopTypeList[index].AddItemToInventory(item, count);
                 currentActiveTab = index;
                 break;
             }
@@ -93,6 +108,12 @@ public class PlayerInventoryManager : MonoBehaviour
         //addmoney back to wallet
         //add back item in shop
         //update weight
+    }
+
+    public void Enablepopup(ShopItem item)
+    {
+        popUp.SetPopup(item);
+        popUp.gameObject.SetActive(true);
     }
    
 

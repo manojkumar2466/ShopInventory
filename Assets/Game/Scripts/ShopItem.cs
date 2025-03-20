@@ -29,8 +29,10 @@ public class ShopItem : MonoBehaviour
     public EShopItemStatus status = EShopItemStatus.Unsold;
     public ShopItemSO shopItemdata { get; private set; }
     public EInventoryType inventoryType=EInventoryType.Shop;
-    public void Initialize(ShopItemSO data)
+    private ShopItemType shopType;
+    public void Initialize(ShopItemSO data, ShopItemType itemtype)
     {
+        shopType = itemtype;
         shopItemdata = data;
         itemName = shopItemdata.itemName;
         itemIcon = shopItemdata.itemIcon;
@@ -60,14 +62,21 @@ public class ShopItem : MonoBehaviour
     }
 
     void OnButtonClick()
-    {        
-        if(isDescriptionDisplayed)
+    {
+        if (inventoryType == EInventoryType.Shop)
         {
-            ShopInventoryManager.Instance.EnableBuyPopup(this);
-            return;
+            if (isDescriptionDisplayed)
+            {
+                ShopInventoryManager.Instance.EnableBuyPopup(this);
+                return;
+            }
+            ShopInventoryManager.Instance.UpdateDescription(description);
+            isDescriptionDisplayed = true;
         }
-        ShopInventoryManager.Instance.UpdateDescription(description);
-        isDescriptionDisplayed = true;
+        else if(inventoryType== EInventoryType.Player)
+        {
+            PlayerInventoryManager.Instance.Enablepopup(this);
+        }
        
     }
 
@@ -92,7 +101,15 @@ public class ShopItem : MonoBehaviour
 
     public void OnItemSoldFromInventory(int count)
     {
-
+        quantityAvailable -= count;
+        shopItemdata.quantityAvailable = quantityAvailable;
+        ShopInventoryManager.Instance.OnItemSoldBack(this, count);
+        RefreshShopItemUI();
+        if (quantityAvailable <= 0)
+        {
+            shopType.RemoveItem(this);
+            Destroy(this.gameObject);
+        }
     }
 
 

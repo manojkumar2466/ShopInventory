@@ -60,7 +60,7 @@ public class ShopItemType : MonoBehaviour
     {
         GameObject item = Instantiate(ShopInventoryManager.Instance.ShopItemBlueprintObject);
         ShopItem shopItem = item.GetComponent<ShopItem>();
-        shopItem.Initialize(data);
+        shopItem.Initialize(data, this);
         item.transform.SetParent(shopItemContent.transform);
         itemsCreated.Add(shopItem);
     }
@@ -104,7 +104,7 @@ public class ShopItemType : MonoBehaviour
     }
 
 
-    public void AddPurchasedShopItemToPlayerInventory(ShopItem item, int count)
+    public void AddItemToInventory(ShopItem item, int count)
     {
        ShopItem newShopItem= itemsCreated.Find(shopItem => shopItem.shopItemdata.itemName.Equals(item.shopItemdata.itemName));
         if (newShopItem)
@@ -119,7 +119,7 @@ public class ShopItemType : MonoBehaviour
             ShopItem shopItem = obj.GetComponent<ShopItem>();
             shopItem.inventoryType = EInventoryType.Player;
             ShopItemSO data = new ShopItemSO(item.shopItemdata);
-            shopItem.Initialize(data);
+            shopItem.Initialize(data, this);
             
             shopItem.quantityAvailable = count;
             
@@ -127,6 +127,11 @@ public class ShopItemType : MonoBehaviour
             itemsCreated.Add(shopItem);
             shopItem.RefreshShopItemUI();
         }
+    }
+
+    public void RemoveItem(ShopItem item)
+    {
+        itemsCreated.Remove(item);
     }
     
 }
