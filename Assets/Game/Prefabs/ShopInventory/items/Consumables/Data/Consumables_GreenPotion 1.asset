@@ -19,5 +19,5 @@ MonoBehaviour:
   buyingPrice: 60
   weight: 13
   rarity: 2
-  quantityAvailable: 100
+  quantityAvailable: 95
   description: green potion
