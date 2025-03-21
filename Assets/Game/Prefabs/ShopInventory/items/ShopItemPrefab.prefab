@@ -355,6 +355,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.0000076293945
       objectReference: {fileID: 0}
+    - target: {fileID: 7202742867824525631, guid: 3e00f8af94f6cc8458569cfcedb65169, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7202742867824525631, guid: 3e00f8af94f6cc8458569cfcedb65169, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 79632c5c39d8ec946a2298a551b5b5cb, type: 3}
+    - target: {fileID: 7202742867824525631, guid: 3e00f8af94f6cc8458569cfcedb65169, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e00f8af94f6cc8458569cfcedb65169, type: 3}
 --- !u!224 &1675948673350872144 stripped
@@ -436,6 +448,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 3991699689570140257}
   count: {fileID: 7059329544431270166}
+  shopItemtype: 0
+  quantityAvailable: 0
   ID: 0
   currentCountText: {fileID: 7059329544431270166}
   status: 0
+  inventoryType: 0
